@@ -1,0 +1,59 @@
+game = [[0,0,0],
+        [0,0,0],
+        [0,0,0]]
+
+def showTable():
+  print game [0]
+  print game [1]
+  print game [2]
+	      
+def checkScore():
+  win = None
+  for a in range (0,3):
+    if game[a][0] == game [a][1] == game [a][2]:
+      if game[a][0]!=0:
+        win = game [a][0]
+    if game[0][a] == game [1][a] == game [2][a]:
+      if game[0][a]!=0:
+        win = game [0][a]
+  if game [0][0] == game [1][1]== game[2][2]:
+    if game[0][0]!=0:
+      win = game [0][0]
+  if game [0][2] == game [1][1] == game[2][0]:
+    if game[0][2]!=0:
+      win = game [0][2]
+  if win ==1:
+    print 'wygrywa 1'
+    return False
+  if win ==2:
+    print 'wygrywa 2'
+    return False
+  
+showTable()
+
+while True:
+  a = int(input ('place y coord for 1'))
+  b = int(input('place x coord for 1'))
+  if game [a][b]==1 or game [a][b] ==2:
+    print'choose empty field'
+    a = int(input ('Try again! Place y coord for 1'))
+    b = int(input('Try again! Place x coord for 1'))
+    
+  game [a][b]=1
+  showTable()
+  win = checkScore()
+  if win==False:
+    break
+  a = int(input ('place y coord for 2'))
+  b = int(input('place x coord for 2'))
+  if game [a][b]==1 or game [a][b] ==2:
+    print'choose empty field'
+    a = int(input ('Try again! Place y coord for 2'))
+    b = int(input('Try again! Place x2 coord for 2'))
+  
+  game [a][b]=2
+  showTable()
+  win = checkScore()
+  if win==False:
+    break
+    
